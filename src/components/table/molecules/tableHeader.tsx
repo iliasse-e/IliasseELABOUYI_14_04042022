@@ -1,12 +1,62 @@
 import React from 'react'
+import { EmployeeType } from '../../../features/employee/reducers/employeeList'
+import './tableHeader.css'
 
-export const TableHeader = (content: any[]): JSX.Element => {
+interface PropsType {
+  cells: string[]
+  method: React.Dispatch<React.SetStateAction<EmployeeType[]>>
+  employees: EmployeeType[]
+}
+
+/**
+ * Sets the header's table
+ * Called in table component
+ * @param props {Array} names of employee's categories
+ * @returns table header
+ */
+export const TableHeader: React.FC<PropsType> = (props): JSX.Element => {
+  const cells: string[] = props.cells
+  const setSortedField = props.method
+  const employees = props.employees
+
+  const sortByName = () => {
+    const sortedData = employees.sort((a: EmployeeType, b: EmployeeType) => {
+      return parseFloat(b.firstName) - parseFloat(a.firstName)
+    })
+
+    console.log(sortedData)
+    setSortedField(sortedData)
+  }
+
   return (
-    <thead>
+    <thead className="table__header">
       <tr role="row">
-        <th aria-label="{content}: activate to sort column descending">
-          {content}
-        </th>
+        {cells.map((cell: any) => (
+          <th
+            className="sorting categories"
+            tabIndex={0}
+            rowSpan={1}
+            aria-controls="employee-table"
+            aria-label={cell + ' active to sort column ascending'}
+            key={cell}
+          >
+            <div style={{ display: 'flex', textTransform: 'capitalize' }}>
+              <p>{cell.replace(/([A-Z])/g, ' $1').trim()}</p>
+              <div className="sorting-btn-container">
+                <button
+                  id={cell + '-asc-sort'}
+                  className="sort-asc"
+                  onClick={sortByName}
+                >
+                  ▲
+                </button>
+                <button id={cell + '-desc-sort'} className="sort-desc">
+                  ▼
+                </button>
+              </div>
+            </div>
+          </th>
+        ))}
       </tr>
     </thead>
   )

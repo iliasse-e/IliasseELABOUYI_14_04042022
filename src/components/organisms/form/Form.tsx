@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { saveEmployeeAction } from '../../../features/employee/actions'
-import { departments } from '../../data/departments'
-import { states } from '../../data/states'
+import { departments } from '../../../data/departments'
+import { states } from '../../../data/states'
 import { Dropdown } from '../dropdown/Dropdown'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
+/**
+ * Renders the form
+ * Saves new employees to the store
+ * called in create employee page
+ * @returns create employee form
+ */
 export const Form: React.FC = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null)
   const [lastName, setLastName] = useState(null)
@@ -48,13 +56,14 @@ export const Form: React.FC = (): JSX.Element => {
 
   return (
     <div className="container">
-      <a href="employee-list.html">View Current Employees</a>
+      <a href="employee-list">View Current Employees</a>
       <h2>Create Employee</h2>
       <form action="#" id="create-employee" onSubmit={handleSubmit}>
         <label htmlFor="first-name">First Name</label>
         <input
           type="text"
           id="first-name"
+          required
           onChange={(e) => setFirstName(e.target.value)}
         />
 
@@ -62,21 +71,32 @@ export const Form: React.FC = (): JSX.Element => {
         <input
           type="text"
           id="last-name"
+          required
           onChange={(e) => setLastName(e.target.value)}
         />
 
         <label htmlFor="date-of-birth">Date of Birth</label>
-        <input
+        <DatePicker
           id="date-of-birth"
-          type="text"
-          onChange={(e) => setBirthDate(e.target.value)}
+          selected={birthDate}
+          onChange={(date) => setBirthDate(date)}
+          showYearDropdown
+          dateFormatCalendar="MMMM"
+          yearDropdownItemNumber={15}
+          required
+          scrollableYearDropdown
         />
 
         <label htmlFor="start-date">Start Date</label>
-        <input
+        <DatePicker
           id="start-date"
-          type="text"
-          onChange={(e) => setStartDate(e.target.value)}
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          showYearDropdown
+          dateFormatCalendar="MMMM"
+          yearDropdownItemNumber={15}
+          required
+          scrollableYearDropdown
         />
 
         <fieldset className="address">
@@ -86,6 +106,7 @@ export const Form: React.FC = (): JSX.Element => {
           <input
             id="street"
             type="text"
+            required
             onChange={(e) => setStreet(e.target.value)}
           />
 
@@ -93,6 +114,7 @@ export const Form: React.FC = (): JSX.Element => {
           <input
             id="city"
             type="text"
+            required
             onChange={(e) => setCity(e.target.value)}
           />
 
@@ -109,6 +131,7 @@ export const Form: React.FC = (): JSX.Element => {
           <input
             id="zip-code"
             type="number"
+            required
             onChange={(e) => setZipCode(e.target.value)}
           />
         </fieldset>

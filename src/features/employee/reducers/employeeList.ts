@@ -1,27 +1,15 @@
 import { SAVE_EMPLOYEE } from '../actions/type'
 
-export interface EmployeeType {
-  firstName: string | null
-  lastName: string | null
-  dateOfBirth: string | null
-  startDate: string | null
-  department: string | null
-  street: string | null
-  city: string | null
-  state: string | null
-  zipCode: string | null
-}
-
-const defaultState = {
-  firstName: null,
-  lastName: null,
-  dateOfBirth: null,
-  startDate: null,
-  department: null,
-  street: null,
-  city: null,
-  state: null,
-  zipCode: null,
+export type EmployeeType = {
+  firstName: string
+  lastName: string
+  dateOfBirth: string
+  startDate: string
+  department: string
+  street: string
+  city: string
+  state: string
+  zipCode: string
 }
 
 /**

@@ -1,0 +1,14 @@
+.categories::first-letter {
+    text-transform:capitalize;
+}
+
+.sorting-btn-container {
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+}
+
+.sort-asc, .sort-desc {
+    border: none;
+    background-color: inherit;
+}

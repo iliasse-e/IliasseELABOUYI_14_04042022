@@ -1,5 +1,5 @@
 import React from 'react'
-import { DropdownDataType } from '../../data/departments'
+import { DropdownDataType } from '../../../data/departments'
 
 interface DropdownProps {
   label: string
@@ -10,7 +10,7 @@ interface DropdownProps {
 
 /**
  * Creates and renders a whole dropdown (content and its title)
- * Called in Form 
+ * Called in Form
  * @param label Title of the dropdown
  * @param value value of the select
  * @param options array of data to fill the dropdown list

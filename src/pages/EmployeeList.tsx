@@ -6,8 +6,13 @@ export const EmployeeListPage: React.FC = (): JSX.Element => {
     <body>
       <div id="employee-div" className="container">
         <h1>Current Employees</h1>
-        <Table />
-        <a href="/">Home</a>
+        <div
+          id="employee-table_wrapper"
+          className="dataTables_wrapper no-footer"
+        >
+          <Table />
+        </div>
+        <a href="/create-employee">Home</a>
       </div>
     </body>
   )

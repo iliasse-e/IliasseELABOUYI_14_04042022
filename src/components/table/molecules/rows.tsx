@@ -1,11 +1,20 @@
-export const Rows = (rows: any = ['cell1', 'cell2', 'cell3']): JSX.Element => {
+import { EmployeeType } from "../../../features/employee/reducers/employeeList"
+
+interface PropsType {
+  employees: EmployeeType[]
+}
+
+export const Rows: React.FC<PropsType> = (props): JSX.Element => {
+  const employees: EmployeeType[] = props.employees
   return (
     <tbody>
-      <tr>
-        {rows.map((row: string) => (
-          <td key={row}>{row}</td>
-        ))}
-      </tr>
+      {employees.map((employee: EmployeeType) => (
+        <tr key={employee.firstName}>
+          {Object.keys(employee).map((key, i) => (
+            <td key={i}>{employee[key]}</td>
+          ))}
+        </tr>
+      ))}
     </tbody>
   )
 }

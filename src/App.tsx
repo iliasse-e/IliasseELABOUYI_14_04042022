@@ -9,8 +9,8 @@ const App: React.FC = (): JSX.Element => {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/" component={EmployeeListPage} exact />
-          <Route path="/create" component={CreateEmployeePage} exact />
+          <Route path="/employee-list" component={EmployeeListPage} exact />
+          <Route path="/create-employee" component={CreateEmployeePage} exact />
         </Switch>
       </div>
     </Router>
