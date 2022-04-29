@@ -6,6 +6,7 @@ import { states } from '../../../data/states'
 import { Dropdown } from '../dropdown/Dropdown'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { convertDate } from '../../methods/formateDate'
 
 /**
  * Renders the form
@@ -16,9 +17,9 @@ import 'react-datepicker/dist/react-datepicker.css'
 export const Form: React.FC = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null)
   const [lastName, setLastName] = useState(null)
-  const [birthDate, setBirthDate] = useState(null)
-  const [startDate, setStartDate] = useState(null)
-  const [street, setStreet] = useState(null)
+  const [birthDate, setBirthDate] = useState<Date | null>(null)
+  const [startDate, setStartDate] = useState<Date | null>(null)
+  const [street, setStreet] = useState<string | null>(null)
   const [city, setCity] = useState(null)
   const [state, setState] = useState(states[0].value) // default value
   const [zipCode, setZipCode] = useState(null)
@@ -30,8 +31,8 @@ export const Form: React.FC = (): JSX.Element => {
     console.log({
       firstName: firstName,
       lastName: lastName,
-      dateOfBirth: birthDate,
-      startDate: startDate,
+      dateOfBirth: convertDate(birthDate),
+      startDate: convertDate(startDate),
       department: department,
       street: street,
       city: city,
@@ -43,8 +44,8 @@ export const Form: React.FC = (): JSX.Element => {
       saveEmployeeAction({
         firstName: firstName,
         lastName: lastName,
-        dateOfBirth: birthDate,
-        startDate: startDate,
+        dateOfBirth: convertDate(birthDate),
+        startDate: convertDate(startDate),
         department: department,
         street: street,
         city: city,
@@ -82,7 +83,7 @@ export const Form: React.FC = (): JSX.Element => {
           onChange={(date) => setBirthDate(date)}
           showYearDropdown
           dateFormatCalendar="MMMM"
-          yearDropdownItemNumber={15}
+          yearDropdownItemNumber={30}
           required
           scrollableYearDropdown
         />

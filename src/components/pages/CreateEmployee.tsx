@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from '../components/organisms/form/Form'
+import { Form } from '../organisms/form/Form'
 
 export const CreateEmployeePage: React.FC = () => {
   return (

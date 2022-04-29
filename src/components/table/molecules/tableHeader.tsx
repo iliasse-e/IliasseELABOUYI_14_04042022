@@ -3,7 +3,7 @@ import { EmployeeType } from '../../../features/employee/reducers/employeeList'
 import './tableHeader.css'
 
 interface PropsType {
-  cells: string[]
+  columns: any
   method: React.Dispatch<React.SetStateAction<EmployeeType[]>>
   employees: EmployeeType[]
 }
@@ -15,13 +15,13 @@ interface PropsType {
  * @returns table header
  */
 export const TableHeader: React.FC<PropsType> = (props): JSX.Element => {
-  const cells: string[] = props.cells
+  const columns: string[] = props.columns
   const setSortedField = props.method
   const employees = props.employees
 
   const sortByName = () => {
     const sortedData = employees.sort((a: EmployeeType, b: EmployeeType) => {
-      return parseFloat(b.firstName) - parseFloat(a.firstName)
+      return parseFloat(a.firstName) - parseFloat(b.firstName)
     })
 
     console.log(sortedData)
@@ -31,7 +31,7 @@ export const TableHeader: React.FC<PropsType> = (props): JSX.Element => {
   return (
     <thead className="table__header">
       <tr role="row">
-        {cells.map((cell: any) => (
+        {columns.map((cell: any) => (
           <th
             className="sorting categories"
             tabIndex={0}

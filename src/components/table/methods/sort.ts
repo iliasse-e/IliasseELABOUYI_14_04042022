@@ -1,22 +1,26 @@
-import { EmployeeType } from "../../../features/employee/reducers/employeeList";
+export const SortedTable = (data, by, order) => {
+  let sortedProducts = [...data]
+  if (order === "up") {
+    sortedProducts.sort((a, b) => {
+      if (a[by] < b[by]) {
+        return -1
+      }
+      if (a[by] > b[by]) {
+        return 1
+      }
+      return 0
+    })
+  } else {
+    sortedProducts.sort((a, b) => {
+      if (a[by] < b[by]) {
+        return 1
+      }
+      if (a[by] > b[by]) {
+        return -1
+      }
+      return 0
+    })
+  }
 
-export const SortedTable = (props) => {
-    const { products } = props;
-  let sortedProducts = [...products];
-  sortedProducts.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  });
-  return (
-    <Table>
-      {/* as before */}
-    </Table>
-  );
+  return sortedProducts
 }
-
-homes.sort((a: EmployeeType, b: EmployeeType) => parseFloat(b.firstName) - parseFloat(a.firstName))

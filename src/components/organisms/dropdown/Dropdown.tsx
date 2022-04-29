@@ -1,10 +1,12 @@
 import React from 'react'
-import { DropdownDataType } from '../../../data/departments'
 
 interface DropdownProps {
   label: string
   value: string
-  options: DropdownDataType
+  options: {
+    label: string
+    value: string
+  }[]
   onChange: any
 }
 

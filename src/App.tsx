@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { CreateEmployeePage } from './pages/CreateEmployee'
-import { EmployeeListPage } from './pages/EmployeeList'
+import { CreateEmployeePage } from './components/pages/CreateEmployee'
+import { EmployeeListPage } from './components/pages/EmployeeList'
 
 const App: React.FC = (): JSX.Element => {
   return (

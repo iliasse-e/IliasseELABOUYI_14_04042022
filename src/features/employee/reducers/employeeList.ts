@@ -3,8 +3,8 @@ import { SAVE_EMPLOYEE } from '../actions/type'
 export type EmployeeType = {
   firstName: string
   lastName: string
-  dateOfBirth: string
-  startDate: string
+  dateOfBirth: Date | string
+  startDate: Date | string
   department: string
   street: string
   city: string

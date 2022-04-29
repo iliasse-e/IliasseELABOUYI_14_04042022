@@ -1,30 +1,65 @@
-import { TableHeader } from '../molecules/tableHeader'
-import { RootStateOrAny, useSelector } from 'react-redux'
-import { EmployeeType } from '../../../features/employee/reducers/employeeList'
-import { Rows } from '../molecules/rows'
 import { useState } from 'react'
+import './table.css'
+import { SortedTable } from '../methods/sort'
 
-export const Table = (): JSX.Element => {
-  // gets data from redux store
-  const employees: EmployeeType[] = useSelector(
-    (state: RootStateOrAny) => state.employees
-  )
-  // sets table categories
-  const categories: string[] = Object.keys(employees[0])
+export interface Column {
+  title: string
+  data: string
+}
 
-  // sorted data
-  const [sortedField, setSortedField] = useState(employees);
-  console.log(sortedField)
+interface TableProps {
+  columns: Column[]
+  data: Array<{ [key: string]: any }>
+  entries: number
+}
+
+/**
+ * Renders table of data
+ * @param { Column[] } obj.columns column labels to fill thead
+ * @param { TableProps.data } obj.data data to fill the tbody
+ * @returns table of data
+ */
+export const Table: React.FC<TableProps> = ({ columns, data, entries }): JSX.Element => {
+  // hook that sorts data
+  const [sortedField, setSortedField] = useState<any[]>(data)
+
+  /**
+   * Sorts table by calling a method and passing it parameters
+   * @param by element by what it should sort the table
+   * @param order up or down
+   */
+  const handleSort = (by: string, order: 'up' | 'down') => {
+    setSortedField(SortedTable(sortedField, by, order))
+  }
 
   return (
-    <table
-      role="grid"
-      className="display dataTable no-footer"
-      id="employee-table"
-      aria-describedby="employee-table_info"
-    >
-      <TableHeader cells={categories} method={setSortedField} employees={sortedField} />
-      <Rows employees={sortedField} />
+    <table>
+      <thead>
+        {columns.map((column) => (
+          <th key={column.title}>
+            {column.title}
+            <div className="arrows">
+              <i
+                className="arrow up"
+                onClick={() => handleSort(column.data, 'up')}
+              ></i>
+              <i
+                className="arrow down"
+                onClick={() => handleSort(column.data, 'down')}
+              ></i>
+            </div>
+          </th>
+        ))}
+      </thead>
+      <tbody>
+        {sortedField.slice(0, entries).map((element) => (
+          <tr>
+            {columns.map((column) => (
+              <td key={element[column.data]}>{element[column.data]}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }

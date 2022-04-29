@@ -1,0 +1,56 @@
+th { 
+	padding: 4px; 
+	border: 1px solid #CCC;
+	overflow: hidden;
+	text-align: left;
+	vertical-align: middle;
+    padding-right: 20px;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.arrows {
+    right: 0;
+    position: relative;
+    width: auto;
+    margin-right: -20px;
+    font-weight: 100;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    cursor: pointer;
+    position: absolute;
+    vertical-align: middle;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    top: -23px;
+    right: 5px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    top: -3px;
+    right: 5px;
+}
+
+.up:hover {
+    transform: rotate(-135deg) scale(1.5);
+    -webkit-transform: rotate(-135deg) scale(1.5);
+    transition: 200ms;
+}
+
+.down:hover {
+    transform: rotate(45deg) scale(1.5);
+    -webkit-transform: rotate(45deg) scale(1.5);
+    transition: 200ms;
+}

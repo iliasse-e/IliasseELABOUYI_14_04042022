@@ -1,9 +1,10 @@
-import { DropdownDataType } from './departments'
-
 /**
  * Data used to set up a dropodown content
  */
-export const states: DropdownDataType = [
+export const states: {
+  label: string
+  value: string
+}[] = [
   {
     label: 'Alabama',
     value: 'AL',

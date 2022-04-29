@@ -1,14 +1,14 @@
 import { EmployeeType } from "../../../features/employee/reducers/employeeList"
 
 interface PropsType {
-  employees: EmployeeType[]
+  data: any
 }
 
-export const Rows: React.FC<PropsType> = (props): JSX.Element => {
-  const employees: EmployeeType[] = props.employees
+export const TableBody: React.FC<PropsType> = (props): JSX.Element => {
+  const data: EmployeeType[] = props.data
   return (
     <tbody>
-      {employees.map((employee: EmployeeType) => (
+      {data.map((employee: EmployeeType) => (
         <tr key={employee.firstName}>
           {Object.keys(employee).map((key, i) => (
             <td key={i}>{employee[key]}</td>

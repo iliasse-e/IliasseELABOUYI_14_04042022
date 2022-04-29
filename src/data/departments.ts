@@ -1,14 +1,10 @@
-export interface DropdownDataType {
-  [index: number]: {
-    label: string
-    value: string
-  }
-}
-
 /**
  * Data used to set up a dropodown content
  */
-export const departments: DropdownDataType = [
+export const departments: {
+  label: string
+  value: string
+}[] = [
   {
     label: 'Sales',
     value: 'sales',
