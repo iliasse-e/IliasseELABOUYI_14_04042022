@@ -1,8 +1,13 @@
 {
   "name": "hr-net",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
     "cra-template-typescript-redux": "0.3.13",
     "moment": "^2.29.2",
     "react": "^18.0.0",
@@ -16,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "fix": "eslint src --ext .js,.jsx,.ts,.tsx  --fix"
@@ -37,6 +42,17 @@
     ]
   },
   "devDependencies": {
-    "@types/react-datepicker": "^4.4.0"
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/react": "^13.2.0",
+    "@types/jest": "^27.5.0",
+    "@types/react-datepicker": "^4.4.0",
+    "babel-jest": "^28.1.0",
+    "global-jsdom": "^8.4.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "jsdom": "^19.0.0",
+    "react-test-renderer": "^18.1.0"
   }
 }

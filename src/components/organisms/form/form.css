@@ -1,0 +1,47 @@
+.form-btn {
+    padding: 10px 80px;
+    margin: 50px auto;
+    width: 100%;
+    background-color: rgb(255, 174, 75);
+    color: white;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+}
+
+form {
+    width: 60%;
+    padding-top: 30px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+form label {
+    color: rgb(253, 142, 7);
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 10px;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:not(:focus):not(:placeholder-shown):invalid {
+    border-bottom: 2px solid red;
+}
+
+.address {
+    margin-top: 10px;
+}
+
+select {
+    display: block;
+}

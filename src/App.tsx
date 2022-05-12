@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
-import { CreateEmployeePage } from './components/pages/CreateEmployee'
-import { EmployeeListPage } from './components/pages/EmployeeList'
+import { CreateEmployeePage } from './components/pages/create-employee'
+import { EmployeeListPage } from './components/pages/employee-list'
+import './App.css'
 
 const App: React.FC = (): JSX.Element => {
   return (
@@ -10,7 +10,7 @@ const App: React.FC = (): JSX.Element => {
       <div className="app">
         <Switch>
           <Route path="/employee-list" component={EmployeeListPage} exact />
-          <Route path="/create-employee" component={CreateEmployeePage} exact />
+          <Route path="/" component={CreateEmployeePage} exact />
         </Switch>
       </div>
     </Router>

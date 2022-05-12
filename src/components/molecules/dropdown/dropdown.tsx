@@ -7,16 +7,16 @@ interface DropdownProps {
     label: string
     value: string
   }[]
-  onChange: any
+  onChange: React.Dispatch<React.SetStateAction<any>>
 }
 
 /**
  * Creates and renders a whole dropdown (content and its title)
  * Called in Form
- * @param label Title of the dropdown
- * @param value value of the select
- * @param options array of data to fill the dropdown list
- * @param onChange event triggered on change
+ * @param {string} props.label Title of the dropdown
+ * @param {string} props.value value of the select
+ * @param {Array} props.options array of data to fill the dropdown list
+ * @param {any} props.onChange event triggered on change
  * @returns dropdown
  */
 export const Dropdown: React.FC<DropdownProps> = ({

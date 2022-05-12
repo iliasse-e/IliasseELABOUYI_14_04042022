@@ -1,0 +1,5 @@
+.table-search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

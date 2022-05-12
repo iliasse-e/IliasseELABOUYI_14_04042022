@@ -1,0 +1,10 @@
+.table-section-container {
+    margin: 20px;
+}
+
+.table-footer, .table-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+

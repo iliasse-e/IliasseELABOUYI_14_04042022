@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, bisque 50%, #5390D9 50%);
 }
 
 code {
@@ -22,30 +25,9 @@ code {
   justify-content: space-between;
 }
 
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 10px;
-}
-
-.address {
-  margin-top: 10px;
-}
-
-select {
-  display: block;
 }

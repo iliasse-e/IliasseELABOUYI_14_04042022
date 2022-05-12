@@ -1,0 +1,21 @@
+.form-header, .table-title {
+    width: 100%;
+    background-color: rgb(241, 241, 241);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.form-header h2, .table-title h2 {
+    padding-left: 50px;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 25px 0;
+}
+
+.link-to-employee-list, .link-to-create-employee {
+    margin-left: 15%;
+}
+
+.link-to-employee-list a, .link-to-create-employee a {
+    color: white;
+}

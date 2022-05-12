@@ -1,0 +1,7 @@
+.paginate-button:hover {
+    cursor: pointer;
+}
+
+.paginate-button {
+    color:rgb(255, 174, 75)
+}
