@@ -43,10 +43,12 @@ export const InputField: React.FC<InputFieldProps> = ({
       <input
         style={{ padding: '15px 0 0 0' }}
         placeholder=" "
-        pattern="[a-zA-Z]+"
+        pattern="[a-zA-Z ]+"
         type={type}
         name={textContent.replace(' ', '-').toLocaleLowerCase()}
         id={textContent.replace(' ', '-').toLocaleLowerCase()}
+        data-testid={textContent.replace(' ', '-').toLocaleLowerCase()}
+        aria-label={textContent.replace(' ', '-').toLocaleLowerCase()}
         required
         onChange={onChange}
       />

@@ -6,7 +6,11 @@
  * @returns new array with sorted data
  */
 
-export const SortedTable = (data: any[], by: string, order: 'up' | 'down') => {
+export const SortedTable = (
+  data: { [key: string]: any }[],
+  by: string,
+  order: 'up' | 'down'
+) => {
   let sortedProducts = [...data]
   if (order === 'up') {
     sortedProducts.sort((a, b) => {

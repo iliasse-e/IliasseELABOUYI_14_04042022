@@ -7,7 +7,7 @@ export const EmployeeCreatedModal = (props): JSX.Element => {
   return (
     <div id="created-employee-modal" className="modal">
       <header className="modal__header">
-        <button id="close-modal" onClick={() => handleStateChange(false)}>
+        <button data-testid="close-modal" id="close-modal" onClick={() => handleStateChange(false)}>
           X
         </button>
       </header>

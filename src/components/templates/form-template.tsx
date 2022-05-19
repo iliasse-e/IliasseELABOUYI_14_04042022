@@ -23,7 +23,7 @@ export const FormTemplate = (): JSX.Element => {
           className="link-to-employee-list form-btn"
           to={process.env.REACT_APP_EMPLOYEE_LIST_PAGE}
         >
-          <a>View Current Employee</a>
+          View Current Employee
         </Link>
         <div className="container">
           <div className="form-header">

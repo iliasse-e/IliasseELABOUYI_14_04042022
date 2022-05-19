@@ -1,6 +1,13 @@
+import { convertDate } from 'components/services/formate-date'
 import React from 'react'
 import { Column } from '../../type'
 import './table-body.css'
+
+enum TYPE {
+  string = 'STRING',
+  number = 'NUMBER',
+  date = 'DATE',
+}
 
 interface TableBodyProps {
   fields: any[]
@@ -9,6 +16,12 @@ interface TableBodyProps {
   columns: Column[]
 }
 
+/**
+ * Renders table body that fits into a table
+ * Converts Date types into string formated type (no need to convert already)
+ * @param param0
+ * @returns tbody
+ */
 export const TableBody: React.FC<TableBodyProps> = ({
   fields,
   pageNo,
@@ -20,10 +33,17 @@ export const TableBody: React.FC<TableBodyProps> = ({
       {fields
         .slice(entries * pageNo - entries, entries * pageNo)
         .map((element) => (
-          <tr>
-            {columns.map((column) => (
-              <td key={element[column.data]}>{element[column.data]}</td>
-            ))}
+          <tr key={element}>
+            {columns.map((column) => {
+              console.log(column.type)
+              return column.type === TYPE.date ? (
+                <td key={convertDate(element[column.data])}>
+                  {convertDate(element[column.data])}
+                </td>
+              ) : (
+                <td key={element[column.data]}>{element[column.data]}</td>
+              )
+            })}
           </tr>
         ))}
     </tbody>

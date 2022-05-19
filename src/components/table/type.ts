@@ -1,6 +1,7 @@
 export interface Column {
   title: string
   data: string
+  type?: string
 }
 
 export interface HandleSort {

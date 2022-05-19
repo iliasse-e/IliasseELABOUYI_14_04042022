@@ -1,24 +1,25 @@
 import { calculateRange } from 'components/table/services/calculate-range'
-import React, { useEffect, useRef } from 'react'
+import { PaginationContext } from 'components/table/services/pagination-context'
+import React, { useContext, useEffect, useRef } from 'react'
 
 interface PaginationNumberProps {
   data: Array<{ [key: string]: any }>
   entries: number
-  setPageNo: React.Dispatch<React.SetStateAction<number>>
-  pageNo: number
 }
 
 export const PaginationNumber: React.FC<PaginationNumberProps> = ({
   data,
   entries,
-  pageNo,
-  setPageNo,
 }): JSX.Element => {
+  const pageNo: number = useContext(PaginationContext).value
+  const setPageNo: React.Dispatch<React.SetStateAction<number>> =
+    useContext(PaginationContext).setValue
+
   const btnRef = useRef(null)
 
   useEffect(() => {
-    btnRef.current.className = 'active'
     console.log(pageNo)
+    btnRef.current.className = 'active'
   }, [pageNo])
 
   return (

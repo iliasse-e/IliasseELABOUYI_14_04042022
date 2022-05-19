@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { PaginationButton } from 'components/table/atoms/button/pagination-button'
 import { calculateRange } from 'components/table/services/calculate-range'
 import { PaginationNumber } from '../pagination/pagination-number'
+import { PaginationContext } from 'components/table/services/pagination-context'
 
 interface TableFooterProps {
   data: Array<{ [key: string]: any }>
-  pageNo: number
   entries: number
-  setPageNo: React.Dispatch<React.SetStateAction<number>>
 }
 
-export const TableFooter: React.FC<TableFooterProps> = ({
-  data,
-  pageNo,
-  entries,
-  setPageNo,
-}) => {
+export const TableFooter: React.FC<TableFooterProps> = ({ data, entries }) => {
+  const pageNo: number = useContext(PaginationContext).value
+  const setPageNo: React.Dispatch<React.SetStateAction<number>> =
+    useContext(PaginationContext).setValue
   return (
     <div className="table-footer">
       <div className="dataTables-info" role="status" aria-live="polite">
@@ -31,12 +28,7 @@ export const TableFooter: React.FC<TableFooterProps> = ({
         ) : (
           <PaginationButton content="Previous" />
         )}
-        <PaginationNumber
-          data={data}
-          entries={entries}
-          pageNo={pageNo}
-          setPageNo={setPageNo}
-        />
+        <PaginationNumber data={data} entries={entries} />
         {pageNo < calculateRange(data, entries).length ? (
           <PaginationButton
             content="Next"

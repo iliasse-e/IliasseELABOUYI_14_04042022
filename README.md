@@ -33,7 +33,7 @@ This is a list of things you need to use the application and how to install them
 * Run the application
 `npm start`
 
-* By default the app is launch on port : [http://localhost:3000/employee-list] to view it in the browser.
-You can modify the path in .env file
+* By default the app is launch on port : [http://localhost:3000/] to view it in the browser.
+If you modify the port, make sure you also modify the path in .env file variables as `PORT` and `REACT_APP_URL`
 
 Now you can fully use the application !

@@ -4,7 +4,6 @@ import { saveEmployeeAction } from '../../../features/employee/actions'
 import { departments } from '../../../data/departments'
 import { states } from '../../../data/states'
 import DatePicker from 'react-datepicker'
-import { convertDate } from '../../services/formate-date'
 import { Dropdown } from '../../molecules/dropdown/dropdown'
 import 'react-datepicker/dist/react-datepicker.css'
 import './form.css'
@@ -43,8 +42,8 @@ export const Form = (props): JSX.Element => {
       saveEmployeeAction({
         firstName: firstName,
         lastName: lastName,
-        dateOfBirth: convertDate(birthDate),
-        startDate: convertDate(startDate),
+        dateOfBirth: birthDate,
+        startDate: startDate,
         department: department,
         street: street,
         city: city,
@@ -57,7 +56,7 @@ export const Form = (props): JSX.Element => {
   }
 
   return (
-    <form id="create-employee" onSubmit={handleSubmit}>
+    <form id="create-employee" data-testid="form" onSubmit={handleSubmit}>
       <div className="form-container">
         <div className="form-column">
           <InputField
@@ -137,7 +136,7 @@ export const Form = (props): JSX.Element => {
           setDepartment(option.target.value)
         }
       />
-      <button className="form-btn" type="submit">
+      <button className="form-btn" data-testid="submit-btn" type="submit">
         Save
       </button>
     </form>

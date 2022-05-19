@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "test-utils": ["./utils/test-utils"]
-    },
     "target": "es6",
     "lib": [
       "dom",
@@ -26,5 +23,5 @@
   },
   "include": [
     "src"
-, "redux"  ]
+, "redux", "jest.config.js"  ]
 }

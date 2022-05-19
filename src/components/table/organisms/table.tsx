@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import './table.css'
 import { SortedTable } from '../services/sort'
 import { TableHeader } from '../molecules/table-header/table-header'
 import { TableBody } from '../molecules/table-body/table-body'
 import { HandleSort, TableProps } from '../type'
+import './table.css'
 
 /**
  * Renders table of data

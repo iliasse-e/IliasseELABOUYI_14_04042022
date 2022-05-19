@@ -3,3 +3,6 @@
     border-radius: 5px;
 }
 
+tr td {
+    text-align: center;
+}

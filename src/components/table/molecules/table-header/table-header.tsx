@@ -21,21 +21,24 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
 
   return (
     <thead>
-      {columns.map((column) => (
-        <th style={{ color: 'white' }} key={column.title}>
-          {column.title}
-          <div className="arrows">
-            <i
-              className="arrow up"
-              onClick={() => handleSort(column.data, 'up')}
-            ></i>
-            <i
-              className="arrow down"
-              onClick={() => handleSort(column.data, 'down')}
-            ></i>
-          </div>
-        </th>
-      ))}
+      <tr>
+        {columns.map((column) => (
+          <th style={{ color: 'white' }} key={column.title}>
+            {column.title}
+            <div className="arrows">
+              <i
+                className="arrow up"
+                onClick={() => handleSort(column.data, 'up')}
+              ></i>
+              <i
+                className="arrow down"
+                onClick={() => handleSort(column.data, 'down')}
+              ></i>
+            </div>
+          </th>
+        ))}
+
+      </tr>
     </thead>
   )
 }
