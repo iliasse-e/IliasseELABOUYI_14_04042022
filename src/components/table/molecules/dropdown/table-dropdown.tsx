@@ -15,6 +15,7 @@ export const TableDropdown: React.FC<TableDropdownProps> = ({
       <label>
         Show
         <select
+          data-testid="table-dropdown"
           name="data-table_length"
           aria-controls="data-table"
           className="dataTables_select"

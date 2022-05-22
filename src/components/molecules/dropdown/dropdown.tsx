@@ -15,8 +15,8 @@ interface DropdownProps {
  * Called in Form
  * @param {string} props.label Title of the dropdown
  * @param {string} props.value value of the select
- * @param {Array} props.options array of data to fill the dropdown list
- * @param {any} props.onChange event triggered on change
+ * @param {Array<{label, value}>} props.options array of data to fill the dropdown list
+ * @param {React.Dispatch<React.SetStateAction<any>>} props.onChange event triggered on change
  * @returns dropdown
  */
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -28,7 +28,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <>
       <label>{label}</label>
-      <select name={value} id={value} value={value} onChange={onChange}>
+      <select name={value} id={value} data-testid='select' value={value} onChange={onChange}>
         {options.map((option: { label: string; value: string }) => (
           <option key={option.value} value={option.value}>
             {option.label}

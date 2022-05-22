@@ -1,4 +1,6 @@
-import React from 'react'
+import { Input } from 'components/atoms/input/input'
+import { Label } from 'components/atoms/label/label'
+import React, { useState } from 'react'
 import './input-field.css'
 
 type HTMLInputTypeAttribute =
@@ -38,26 +40,18 @@ export const InputField: React.FC<InputFieldProps> = ({
   type,
   onChange,
 }): JSX.Element => {
+  const [isValid, setIsValid] = useState(false)
+  const errorStyle= {color: "red"}
   return (
-    <div className="input-field">
-      <input
-        style={{ padding: '15px 0 0 0' }}
-        placeholder=" "
-        pattern="[a-zA-Z ]+"
+    <div className="input-field" data-error={isValid}>
+      <Input
+        content={textContent}
         type={type}
-        name={textContent.replace(' ', '-').toLocaleLowerCase()}
-        id={textContent.replace(' ', '-').toLocaleLowerCase()}
-        data-testid={textContent.replace(' ', '-').toLocaleLowerCase()}
-        aria-label={textContent.replace(' ', '-').toLocaleLowerCase()}
-        required
         onChange={onChange}
+        setIsValid={setIsValid}
       />
-      <label
-        className="active"
-        htmlFor={textContent.replace(' ', '-').toLocaleLowerCase()}
-      >
-        {textContent}
-      </label>
+      {isValid ? <Label content={textContent} style={errorStyle} /> : <Label content={textContent} />}
+      {isValid && <span className='error-msg'>error format</span>}
     </div>
   )
 }

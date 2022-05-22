@@ -22,11 +22,11 @@ export const Select: React.FC<SelectType> = ({
   )
 
   const handleChange = () => {
-    console.log("fruit selected")
+    console.log('fruit selected')
   }
 
   return (
-    <select value={"apple"} name={name} id={name} onChange={handleChange}>
+    <select value={'apple'} name={name} id={name} onChange={handleChange}>
       {selectItems}
     </select>
   )

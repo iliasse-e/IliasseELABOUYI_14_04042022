@@ -18,14 +18,14 @@ test('should sort by name order', () => {
 
 test('should sort by age order from highest to smallest', () => {
   const toSort = [
-    { name: 'daniel', age: 32 },
-    { name: 'albert', age: 24 },
-    { name: 'clovis', age: 43 },
+    { name: 'daniel', age: 32, size: 177 },
+    { name: 'albert', age: 24, size: 177 },
+    { name: 'clovis', age: 43, size: 168 },
   ]
   expect(SortedTable(toSort, 'age', 'down')).toEqual([
-    { name: 'clovis', age: 43 },
-    { name: 'daniel', age: 32 },
-    { name: 'albert', age: 24 },
+    { name: 'clovis', age: 43, size: 168 },
+    { name: 'daniel', age: 32, size: 177 },
+    { name: 'albert', age: 24, size: 177 },
   ])
 })
 

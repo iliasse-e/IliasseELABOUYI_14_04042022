@@ -12,7 +12,8 @@ export const NotFound = () => {
       }}
     >
       <h1>This Page does not exist</h1>
-      <Link style={{margin: "50px"}}
+      <Link
+        style={{ margin: '50px' }}
         className="link-to-create-employee form-btn"
         to={process.env.REACT_APP_CREATE_EMPLOYEE_PAGE}
       >

@@ -48,3 +48,11 @@ it('renders data in table body in case of wrong data type', () => {
   )
   expect(getByText('Kakruvot Chatrovic')).toBeInTheDocument()
 })
+
+it('renders age in table body even if two output types are differents', () => {
+  const { getByText } = render(
+    <Table columns={columns} data={data3} entries={2} pageNo={1} />
+  )
+  expect(getByText('23')).toBeInTheDocument()
+  expect(getByText('43')).toBeInTheDocument()
+})

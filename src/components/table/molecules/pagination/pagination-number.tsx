@@ -23,7 +23,7 @@ export const PaginationNumber: React.FC<PaginationNumberProps> = ({
   }, [pageNo])
 
   return (
-    <span>
+    <span data-testid="pagination-btn-container">
       {calculateRange(data, entries).map((btn) => (
         <button
           className={btn === pageNo && 'not-active'}

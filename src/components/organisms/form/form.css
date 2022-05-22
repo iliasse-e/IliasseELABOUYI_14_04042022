@@ -26,18 +26,6 @@ form label {
     margin-bottom: 10px;
 }
 
-input {
-    border: none;
-}
-
-input:focus {
-    outline: none;
-}
-
-input:not(:focus):not(:placeholder-shown):invalid {
-    border-bottom: 2px solid red;
-}
-
 .address {
     margin-top: 10px;
 }

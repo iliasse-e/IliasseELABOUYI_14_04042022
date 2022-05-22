@@ -5,7 +5,14 @@ import React from 'react'
  * @param content text content
  * @returns {JSX.Element} label
  */
-export const Label = (content: string): JSX.Element => {
-  const htmlFor = content.toLocaleLowerCase().split(' ').join('-')
-  return <label htmlFor={htmlFor}>{content}</label>
+export const Label: React.FC<{ content: string, style?: any }> = ({
+  content,
+  style,
+}): JSX.Element => {
+  const htmlFor = content.toLocaleLowerCase().replace(' ', '-')
+  return (
+    <label className="active" htmlFor={htmlFor} style={style}>
+      {content}
+    </label>
+  )
 }
