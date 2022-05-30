@@ -26,11 +26,11 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
           <th style={{ color: 'white' }} key={column.title}>
             {column.title}
             <div className="arrows">
-              <button
+              <i
                 className="arrow up"
                 data-testid={column.data + '-arrow-up'}
                 onClick={() => handleSort(column.data, 'up')}
-              ></button>
+              ></i>
               <i
                 className="arrow down"
                 onClick={() => handleSort(column.data, 'down')}

@@ -4,7 +4,8 @@ import './template.css'
 import { TableTemplate } from 'components/table/template/table-template'
 import { columns } from 'data/columns'
 
-export const EmployeeTableTemplate: React.FC<any> = (props): JSX.Element => {
+export const EmployeeTableTemplate: React.FC<any> = ({ data }): JSX.Element => {
+  console.log(data)
   return (
     <main>
       <Link
@@ -17,7 +18,7 @@ export const EmployeeTableTemplate: React.FC<any> = (props): JSX.Element => {
         <div className="table-title">
           <h2>Current Employees</h2>
         </div>
-        <TableTemplate data={props.data} columns={columns} />
+        <TableTemplate dataInput={data} columns={columns} />
       </div>
     </main>
   )

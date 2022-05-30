@@ -2,11 +2,12 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import '../../../../setupTest'
 import { TableBody } from './table-body'
+import { TYPE } from 'components/table/type'
 
 const columns = [
-  { title: 'Nom', data: 'name', type: 'STRING' },
-  { title: 'Age', data: 'age', type: 'NUMBER' },
-  { title: 'Date de naissance', data: 'birthdate', type: 'DATE' },
+  { title: 'Nom', data: 'name', type: TYPE.string },
+  { title: 'Age', data: 'age', type: TYPE.date },
+  { title: 'Date de naissance', data: 'birthdate', type: TYPE.date },
 ]
 
 const data = [

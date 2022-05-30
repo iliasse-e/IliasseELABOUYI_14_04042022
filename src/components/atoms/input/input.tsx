@@ -36,7 +36,9 @@ export const Input: React.FC<InputType> = ({
       aria-label={content.replace(' ', '-').toLocaleLowerCase()}
       required
       onChange={() => {
-        if (setIsValid) {setIsValid(!input.current?.checkValidity())}
+        if (setIsValid) {
+          setIsValid(!input.current?.checkValidity())
+        }
         return onChange
       }}
     />

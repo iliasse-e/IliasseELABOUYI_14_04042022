@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import './template.css'
 
 export const FormTemplate = (): JSX.Element => {
-
   return (
     <>
       <header className="title">

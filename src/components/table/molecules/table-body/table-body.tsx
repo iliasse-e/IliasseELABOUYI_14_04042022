@@ -2,12 +2,7 @@ import { convertDate } from 'components/services/formate-date'
 import React from 'react'
 import { Column } from '../../type'
 import './table-body.css'
-
-enum TYPE {
-  string = 'STRING',
-  number = 'NUMBER',
-  date = 'DATE',
-}
+import {TYPE} from '../../type'
 
 interface TableBodyProps {
   fields: any[]
@@ -33,8 +28,9 @@ export const TableBody: React.FC<TableBodyProps> = ({
       {fields
         .slice(entries * pageNo - entries, entries * pageNo)
         .map((element) => (
-          <tr key={element}>
+          <tr key={Math.random()}>
             {columns.map((column) => {
+            console.log(element)
               console.log(column.type)
               return column.type === TYPE.date ? (
                 <td key={convertDate(element[column.data])}>

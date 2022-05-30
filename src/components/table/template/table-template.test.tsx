@@ -3,6 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import '../../../setupTest'
 import { TableTemplate } from './table-template'
 import '@testing-library/jest-dom/extend-expect'
+import { TYPE } from '../type'
 
 const data = [
   { name: 'Sanovski', age: 31, birthdate: new Date(1992) },
@@ -20,19 +21,19 @@ const data = [
 ]
 
 const columns = [
-  { title: 'Nom', data: 'name', type: 'STRING' },
-  { title: 'Age', data: 'age', type: 'NUMBER' },
-  { title: 'Date de naissance', data: 'birthdate', type: 'DATE' },
+  { title: 'Nom', data: 'name', type: TYPE.string },
+  { title: 'Age', data: 'age', type: TYPE.number },
+  { title: 'Date de naissance', data: 'birthdate', type: TYPE.date },
 ]
 
 it('Should render table even in case of empty data and wrong column data', () => {
-  const component = render(<TableTemplate data={[{}]} columns={[{}]} />)
+  const component = render(<TableTemplate dataInput={[{}]} columns={[{}]} />)
   const element = component.getByRole('table')
   expect(element).toBeInTheDocument()
 })
 
 it('goes to next pagination number button as next button is clicked', async () => {
-  const { getByText } = render(<TableTemplate data={data} columns={columns} />)
+  const { getByText } = render(<TableTemplate dataInput={data} columns={columns} />)
   const nextBtn = getByText('Next')
   const btn2 = getByText('2')
   expect(btn2).toBeInTheDocument()
@@ -42,7 +43,7 @@ it('goes to next pagination number button as next button is clicked', async () =
 
 it('hides all data that is not linked with search input', async () => {
   const { getByTestId } = render(
-    <TableTemplate data={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} />
   )
   const searchInput = getByTestId('search')
   fireEvent.change(searchInput, { target: { value: 'Baku' } })
@@ -51,7 +52,7 @@ it('hides all data that is not linked with search input', async () => {
 
 it('sorts data on categroy click', async () => {
   const { getByTestId } = render(
-    <TableTemplate data={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} />
   )
   const sortByNameUpBtn = getByTestId('name-arrow-up')
   fireEvent.click(sortByNameUpBtn)
@@ -61,7 +62,7 @@ it('sorts data on categroy click', async () => {
 
 it('shows all data in one table page', async () => {
   const { getByTestId } = render(
-    <TableTemplate data={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} />
   )
   const tableDropdown = getByTestId('table-dropdown')
   const btnContainer = getByTestId('pagination-btn-container')

@@ -9,15 +9,16 @@ import { PaginationContext } from '../services/pagination-context'
 import { Column } from '../type'
 
 interface TableTemplateProps {
-  data: Array<{ [key: string]: any }>
+  dataInput: Array<{ [key: string]: any }>
   columns: Column[]
 }
 
-export const TableTemplate: React.FC<TableTemplateProps> = (
-  props
-): JSX.Element => {
-  const getData: Array<{ [key: string]: any }> = props.data
-  const columns = props.columns
+export const TableTemplate: React.FC<TableTemplateProps> = ({
+  dataInput,
+  columns,
+}): JSX.Element => {
+  const getData: Array<{ [key: string]: any }> = dataInput
+  const getColumns = columns
 
   const [entries, setEntries] = useState(10)
   const [pageNo, setPageNo] = useState(1)
@@ -44,7 +45,7 @@ export const TableTemplate: React.FC<TableTemplateProps> = (
           <TableSearch handleSearch={handleSearch} />
         </div>
         <Table
-          columns={columns}
+          columns={getColumns}
           data={data}
           entries={entries}
           pageNo={pageNo}

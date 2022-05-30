@@ -1,21 +1,16 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '../../setupTest'
-import { FormTemplate } from './form-template'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import configureStore from '../../features/store'
 import { EmployeeTableTemplate } from './employee-table-template'
-import { EmployeeType } from 'features/employee/reducers/employeeList'
-const { store } = configureStore()
+import { DEPARTMENT, EmployeeType } from 'types'
+import { CreateEmployeePage } from 'components/pages/create-employee'
 
 describe('Testing form template component', () => {
   const component = () =>
     render(
       <Router>
-        <Provider store={store}>
-          <FormTemplate />
-        </Provider>
+        <CreateEmployeePage />
       </Router>
     )
 
@@ -38,11 +33,11 @@ describe('testing table template component', () => {
       lastName: 'string',
       dateOfBirth: new Date('2018, november'),
       startDate: new Date('01/01/2022'),
-      department: 'string',
+      department: DEPARTMENT.HUMAN,
       street: 'string',
       city: 'string',
       state: 'string',
-      zipCode: 'string',
+      zipCode: 35000,
     },
   ]
 

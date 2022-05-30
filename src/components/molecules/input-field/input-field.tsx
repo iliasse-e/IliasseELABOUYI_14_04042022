@@ -41,7 +41,7 @@ export const InputField: React.FC<InputFieldProps> = ({
   onChange,
 }): JSX.Element => {
   const [isValid, setIsValid] = useState(false)
-  const errorStyle= {color: "red"}
+  const errorStyle = { color: 'red' }
   return (
     <div className="input-field" data-error={isValid}>
       <Input
@@ -50,7 +50,11 @@ export const InputField: React.FC<InputFieldProps> = ({
         onChange={onChange}
         setIsValid={setIsValid}
       />
-      {isValid ? <Label content={textContent} style={errorStyle} /> : <Label content={textContent} />}
+      {isValid ? (
+        <Label content={textContent} style={errorStyle} />
+      ) : (
+        <Label content={textContent} />
+      )}
       {isValid && <span className='error-msg'>error format</span>}
     </div>
   )

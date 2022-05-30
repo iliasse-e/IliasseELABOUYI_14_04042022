@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { saveEmployeeAction } from '../../../features/employee/actions'
 import { departments } from '../../../data/departments'
 import { states } from '../../../data/states'
 import DatePicker from 'react-datepicker'
@@ -9,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './form.css'
 import { InputField } from 'components/molecules/input-field/input-field'
 import { EmployeeCreatedModal } from '../modal/employee-created-modal'
+import { DEPARTMENT } from 'types'
 
 /**
  * Renders the form
@@ -25,23 +24,24 @@ export const Form = (): JSX.Element => {
 
   const [isSubmited, setIsSubmited] = useState(false)
 
-  const [firstName, setFirstName] = useState(null)
-  const [lastName, setLastName] = useState(null)
+  const [firstName, setFirstName] = useState<string | null>(null)
+  const [lastName, setLastName] = useState<string | null>(null)
   const [birthDate, setBirthDate] = useState<Date>(birthDateDefault)
   const [startDate, setStartDate] = useState<Date>(startDateDefault)
   const [street, setStreet] = useState<string | null>(null)
-  const [city, setCity] = useState(null)
-  const [state, setState] = useState(states[0].value) // default value
-  const [zipCode, setZipCode] = useState(null)
-  const [department, setDepartment] = useState(departments[0].value) // default value
+  const [city, setCity] = useState<string | null>(null)
+  const [state, setState] = useState<string>(states[0].value) // default value
+  const [zipCode, setZipCode] = useState<number | null>(null)
+  const [department, setDepartment] = useState<DEPARTMENT>(departments[0].value as DEPARTMENT) // default value
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
 
-    dispatch(
-      saveEmployeeAction({
+    console.log(
+      // store data
+      {
         firstName: firstName,
         lastName: lastName,
         dateOfBirth: birthDate,
@@ -52,7 +52,7 @@ export const Form = (): JSX.Element => {
         state: state,
         zipCode: zipCode,
       })
-    )
+    
     ;(e.target as HTMLFormElement).reset()
     setIsSubmited(true)
   }
@@ -136,7 +136,7 @@ export const Form = (): JSX.Element => {
                 textContent="Zip Code"
                 type="number"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setZipCode(e.target.value)
+                  setZipCode(parseInt(e.target.value))
                 }
               />
             </fieldset>
@@ -147,7 +147,7 @@ export const Form = (): JSX.Element => {
           value={department}
           options={departments}
           onChange={(option: React.ChangeEvent<HTMLInputElement>) =>
-            setDepartment(option.target.value)
+            setDepartment(option.target.value as DEPARTMENT)
           }
         />
         <button className="form-btn" data-testid="submit-btn" type="submit">

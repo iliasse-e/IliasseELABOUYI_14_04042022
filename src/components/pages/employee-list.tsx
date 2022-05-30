@@ -1,12 +1,9 @@
-import React from 'react'
-import { RootStateOrAny, useSelector } from 'react-redux'
-import { EmployeeType } from 'features/employee/reducers/employeeList'
+import React, { useContext } from 'react'
 import { EmployeeTableTemplate } from 'components/templates/employee-table-template'
+import { DataContext } from 'features/context'
 
 export const EmployeeListPage: React.FC = (): JSX.Element => {
-  // gets data from redux store
-  const employees: EmployeeType[] = useSelector(
-    (state: RootStateOrAny) => state.employees
-  )
-  return <EmployeeTableTemplate data={employees} />
+  const data = useContext(DataContext).employees
+
+  return <EmployeeTableTemplate data={data} />
 }
