@@ -30,8 +30,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
         .map((element) => (
           <tr key={Math.random()}>
             {columns.map((column) => {
-            console.log(element)
-              console.log(column.type)
               return column.type === TYPE.date ? (
                 <td key={convertDate(element[column.data])}>
                   {convertDate(element[column.data])}

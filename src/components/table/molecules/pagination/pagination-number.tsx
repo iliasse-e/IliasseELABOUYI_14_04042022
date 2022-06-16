@@ -1,5 +1,6 @@
 import { calculateRange } from 'components/table/services/calculate-range'
 import { PaginationContext } from 'components/table/services/pagination-context'
+import { TableColor } from 'components/table/services/table-color-context'
 import React, { useContext } from 'react'
 
 interface PaginationNumberProps {
@@ -11,6 +12,7 @@ export const PaginationNumber: React.FC<PaginationNumberProps> = ({
   data,
   entries,
 }): JSX.Element => {
+  const bgColor = useContext(TableColor).value
   const pageNo: number = useContext(PaginationContext).value
   const setPageNo: React.Dispatch<React.SetStateAction<number>> =
     useContext(PaginationContext).setValue
@@ -20,6 +22,7 @@ export const PaginationNumber: React.FC<PaginationNumberProps> = ({
       {calculateRange(data, entries).map((btn) => (
         <button
           className={btn === pageNo && 'active'}
+          style={btn === pageNo && { backgroundColor: bgColor }}
           aria-controls="data-table"
           key={btn}
           onClick={() => setPageNo(btn)}

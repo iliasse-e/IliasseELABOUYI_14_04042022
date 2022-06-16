@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import '../../../setupTest'
 import { TableTemplate } from './table-template'
 import '@testing-library/jest-dom/extend-expect'
-import { TYPE } from '../type'
+import { Column, TYPE } from '../type'
 
 const data = [
   { name: 'Sanovski', age: 31, birthdate: new Date(1992) },
@@ -27,13 +27,17 @@ const columns = [
 ]
 
 it('Should render table even in case of empty data and wrong column data', () => {
-  const component = render(<TableTemplate dataInput={[{}]} columns={[{}]} />)
+  const component = render(
+    <TableTemplate dataInput={[{}]} columns={[{}] as Column[]} />
+  )
   const element = component.getByRole('table')
   expect(element).toBeInTheDocument()
 })
 
 it('goes to next pagination number button as next button is clicked', async () => {
-  const { getByText } = render(<TableTemplate dataInput={data} columns={columns} />)
+  const { getByText } = render(
+    <TableTemplate dataInput={data} columns={columns} color={"rgb(232, 230, 227)"} />
+  )
   const nextBtn = getByText('Next')
   const btn2 = getByText('2')
   expect(btn2).toBeInTheDocument()

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './template.css'
 import { TableTemplate } from 'components/table/template/table-template'
 import { columns } from 'data/columns'
+import DataContext from 'features/context'
 
-export const EmployeeTableTemplate: React.FC<any> = ({ data }): JSX.Element => {
-  console.log(data)
+export const EmployeeTableTemplate: React.FC = (): JSX.Element => {
+  const { employees } = useContext(DataContext)
+
   return (
     <main>
       <Link
@@ -18,7 +20,11 @@ export const EmployeeTableTemplate: React.FC<any> = ({ data }): JSX.Element => {
         <div className="table-title">
           <h2>Current Employees</h2>
         </div>
-        <TableTemplate dataInput={data} columns={columns} />
+        <TableTemplate
+          dataInput={employees}
+          columns={columns}
+          color={'#88FF22'}
+        />
       </div>
     </main>
   )

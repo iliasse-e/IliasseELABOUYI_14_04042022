@@ -12,10 +12,6 @@ const columns: Column[] = [
   { title: 'age', data: 'age' },
 ]
 
-const data1 = [
-  { name: 'Nayrad Shamzy', age: 23 },
-  { name: 'Kakruvot Chatrovic', age: 43 },
-]
 const data2 = [
   { name: 'Nayrad Shamzy', age: '23' },
   { name: 'Kakruvot Chatrovic', age: '43' },

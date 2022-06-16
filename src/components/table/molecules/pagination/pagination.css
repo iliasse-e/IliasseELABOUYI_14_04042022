@@ -16,7 +16,7 @@
 
 .paginate-container .active {
     padding: 4px 10px;
-    background: rgb(255, 174, 75);
+    /* background: rgb(255, 174, 75); */
     color: white;
     border: none;
 }

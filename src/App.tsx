@@ -4,40 +4,46 @@ import { CreateEmployeePage } from './components/pages/create-employee'
 import { EmployeeListPage } from './components/pages/employee-list'
 import './App.css'
 import { NotFound } from 'components/pages/not-found'
-import { DataContext } from 'features/context'
-import { getEmployees, postEmployees } from 'components/services/fetch-data'
+import DataContext from 'features/context'
 import { EmployeeType } from 'types'
-import { columns } from 'data/columns'
+import { Loader } from 'components/atoms/loader/loader'
 
 export const App: React.FC = (): JSX.Element => {
-  const [employees, setEmployees] = useState<EmployeeType[] | []>()
+  const [employees, setEmployees] = useState<EmployeeType[] | []>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const value = { employees, setEmployees }
 
   useEffect(() => {
-    try {
-      const axiosGet = async () => {
-        postEmployees()
-        const response = await getEmployees()
-        setEmployees(response?.data?.employeeList)
+    const fetchEmployees = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch('api/get-employees')
+        const data = await response.json()
+        setEmployees(data.employeeList)
+        setIsLoading(false)
+      } catch (err) {
+        console.error(err)
       }
-      axiosGet()
-    } catch (err) {
-      alert(err)
     }
+    fetchEmployees()
   }, [])
 
-  return (
-    <DataContext.Provider value={{ employees, columns }}>
-      <Router>
-        <div className="app">
-          <Switch>
-            <Route path="/employee-list" component={EmployeeListPage} exact />
-            <Route path="/" component={CreateEmployeePage} exact />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </div>
-      </Router>
-    </DataContext.Provider>
-  )
+  if (isLoading) return <Loader />
+  else {
+    return (
+      <DataContext.Provider value={value}>
+        <Router>
+          <div className="app">
+            <Switch>
+              <Route path="/employee-list" component={EmployeeListPage} exact />
+              <Route path="/" component={CreateEmployeePage} exact />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+        </Router>
+      </DataContext.Provider>
+    )
+  }
 }
 
 export default App

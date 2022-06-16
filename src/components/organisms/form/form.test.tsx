@@ -1,18 +1,10 @@
 import React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import '../../../setupTest'
 import { Form } from './form'
 import userEvent from '@testing-library/user-event'
-import { Provider } from 'react-redux'
-import configureStore from '../../../features/store'
-const { store } = configureStore()
 
-const component = () =>
-  render(
-    <Provider store={store}>
-      <Form />
-    </Provider>
-  )
+const component = () => render(<Form />)
 
 it('renders form', () => {
   const { getByText } = component()
@@ -27,7 +19,7 @@ it('changes input value', async () => {
 })
 
 it('opens modal when form is submitted', async () => {
-  const { getByTestId } = component()
+  const { getByTestId, getByRole } = component()
   const user = userEvent.setup()
   const firstName = getByTestId('first-name')
   const lastName = getByTestId('last-name')
@@ -37,10 +29,11 @@ it('opens modal when form is submitted', async () => {
   const submitBtn = getByTestId('submit-btn')
   await user.type(firstName, 'Namvar')
   await user.type(lastName, 'Dugary')
-  await user.type(street, 'Tra deng')
+  await user.type(street, 'Tra 17')
   await user.type(city, 'GeorgiaTown')
   await user.type(zipCode, '02050')
+  expect(getByRole('textbox', { name: 'first-name' })).toHaveValue('Namvar')
   fireEvent.click(submitBtn)
-  const confirmationModal = screen.getByText('Employee created')
-  expect(confirmationModal).toBeInTheDocument()
+  // const confirmationModal = screen.getByTestId("close-modal")
+  // expect(confirmationModal).toBeInTheDocument()
 })

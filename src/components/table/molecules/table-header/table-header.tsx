@@ -38,7 +38,6 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
             </div>
           </th>
         ))}
-
       </tr>
     </thead>
   )

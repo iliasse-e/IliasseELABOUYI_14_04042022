@@ -1,14 +1,14 @@
-import { Column } from 'components/table/type'
-import { columns } from 'data/columns'
-import { createContext } from 'react'
+import React, { createContext } from 'react'
 import { EmployeeType } from '.././types'
 
 interface ContextType {
   employees: EmployeeType[] | []
-  columns: Column[]
+  setEmployees: React.Dispatch<React.SetStateAction<EmployeeType[]>>
 }
 
-export const DataContext: React.Context<ContextType> = createContext({
+const DataContext: React.Context<ContextType> = createContext({
   employees: [],
-  columns: columns,
+  setEmployees: () => {},
 })
+
+export default DataContext

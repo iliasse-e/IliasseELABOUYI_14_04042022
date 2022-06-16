@@ -5,7 +5,7 @@ interface InputType {
   content: string
   type: string
   onChange: React.Dispatch<React.SetStateAction<any>>
-  setIsValid?: React.Dispatch<React.SetStateAction<any>>
+  setIsNotValid?: React.Dispatch<React.SetStateAction<any>>
 }
 
 /**
@@ -19,15 +19,21 @@ export const Input: React.FC<InputType> = ({
   content,
   type,
   onChange,
-  setIsValid,
+  setIsNotValid,
 }): JSX.Element => {
   const input = useRef(null)
+
+  const pattern = (target: string): string => {
+    if (target.includes('name') || target.includes('city')) {
+      return '[a-zA-Z ]+'
+    } else return '[a-zA-Z0-9 ]+'
+  }
 
   return (
     <input
       style={{ padding: '15px 0 0 0' }}
       placeholder=" "
-      pattern="[a-zA-Z ]+"
+      pattern={pattern(content.toLocaleLowerCase())}
       type={type}
       ref={input}
       name={content.replace(' ', '-').toLocaleLowerCase()}
@@ -35,12 +41,12 @@ export const Input: React.FC<InputType> = ({
       data-testid={content.replace(' ', '-').toLocaleLowerCase()}
       aria-label={content.replace(' ', '-').toLocaleLowerCase()}
       required
-      onChange={() => {
-        if (setIsValid) {
-          setIsValid(!input.current?.checkValidity())
-        }
-        return onChange
+      onChange={(e) => {
+        e.preventDefault()
+        if (!e.target.checkValidity()) setIsNotValid(true)
+        else setIsNotValid(false)
       }}
+      onInput={onChange}
     />
   )
 }

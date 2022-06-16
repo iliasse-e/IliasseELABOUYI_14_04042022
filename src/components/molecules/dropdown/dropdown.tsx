@@ -28,7 +28,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <>
       <label>{label}</label>
-      <select name={value} id={value} data-testid='select' value={value} onChange={onChange}>
+      <select
+        name={value}
+        id={value}
+        data-testid="select"
+        value={value}
+        onChange={onChange}
+      >
         {options.map((option: { label: string; value: string }) => (
           <option key={option.value} value={option.value}>
             {option.label}

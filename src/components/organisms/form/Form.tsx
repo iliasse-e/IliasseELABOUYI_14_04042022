@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { departments } from '../../../data/departments'
 import { states } from '../../../data/states'
 import DatePicker from 'react-datepicker'
@@ -7,7 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './form.css'
 import { InputField } from 'components/molecules/input-field/input-field'
 import { EmployeeCreatedModal } from '../modal/employee-created-modal'
-import { DEPARTMENT } from 'types'
+import { DEPARTMENT, EmployeeType } from 'types'
+import DataContext from 'features/context'
+import { postEmployees } from 'components/services/fetch-data'
 
 /**
  * Renders the form
@@ -22,8 +24,6 @@ export const Form = (): JSX.Element => {
     new Date().setDate(new Date().getDate() - 1)
   )
 
-  const [isSubmited, setIsSubmited] = useState(false)
-
   const [firstName, setFirstName] = useState<string | null>(null)
   const [lastName, setLastName] = useState<string | null>(null)
   const [birthDate, setBirthDate] = useState<Date>(birthDateDefault)
@@ -32,27 +32,35 @@ export const Form = (): JSX.Element => {
   const [city, setCity] = useState<string | null>(null)
   const [state, setState] = useState<string>(states[0].value) // default value
   const [zipCode, setZipCode] = useState<number | null>(null)
-  const [department, setDepartment] = useState<DEPARTMENT>(departments[0].value as DEPARTMENT) // default value
+  const [department, setDepartment] = useState<DEPARTMENT>(
+    departments[0].value as DEPARTMENT
+  ) // default value
+  const [isSubmited, setIsSubmited] = useState<boolean>(false)
+  const { employees, setEmployees } = useContext(DataContext)
 
-  // const dispatch = useDispatch()
-
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
 
-    console.log(
-      // store data
-      {
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: birthDate,
-        startDate: startDate,
-        department: department,
-        street: street,
-        city: city,
-        state: state,
-        zipCode: zipCode,
+    const userInput: EmployeeType = {
+      firstName: firstName,
+      lastName: lastName,
+      dateOfBirth: birthDate,
+      startDate: startDate,
+      department: department,
+      street: street,
+      city: city,
+      state: state,
+      zipCode: zipCode,
+    }
+
+    const updtatedEmployees: EmployeeType[] = [...employees, userInput]
+
+    await postEmployees(updtatedEmployees)
+      .then(() => setEmployees(updtatedEmployees))
+      .catch((err) => {
+        console.error(err)
+        setEmployees(employees)
       })
-    
     ;(e.target as HTMLFormElement).reset()
     setIsSubmited(true)
   }

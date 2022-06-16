@@ -3,7 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import '../../setupTest'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { EmployeeTableTemplate } from './employee-table-template'
-import { DEPARTMENT, EmployeeType } from 'types'
 import { CreateEmployeePage } from 'components/pages/create-employee'
 
 describe('Testing form template component', () => {
@@ -27,24 +26,24 @@ describe('Testing form template component', () => {
 })
 
 describe('testing table template component', () => {
-  const employees: EmployeeType[] = [
-    {
-      firstName: 'string',
-      lastName: 'string',
-      dateOfBirth: new Date('2018, november'),
-      startDate: new Date('01/01/2022'),
-      department: DEPARTMENT.HUMAN,
-      street: 'string',
-      city: 'string',
-      state: 'string',
-      zipCode: 35000,
-    },
-  ]
+  // const employees: EmployeeType[] = [
+  //   {
+  //     firstName: 'string',
+  //     lastName: 'string',
+  //     dateOfBirth: new Date('2018, november'),
+  //     startDate: new Date('01/01/2022'),
+  //     department: DEPARTMENT.HUMAN,
+  //     street: 'string',
+  //     city: 'string',
+  //     state: 'string',
+  //     zipCode: 35000,
+  //   },
+  // ]
 
   const component = () =>
     render(
       <Router>
-        <EmployeeTableTemplate data={employees} />
+        <EmployeeTableTemplate />
       </Router>
     )
 

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { SortedTable } from '../services/sort'
 import { TableHeader } from '../molecules/table-header/table-header'
 import { TableBody } from '../molecules/table-body/table-body'
 import { HandleSort, TableProps } from '../type'
 import './table.css'
+import { TableColor } from '../services/table-color-context'
 
 /**
  * Renders table of data
@@ -18,6 +19,7 @@ export const Table: React.FC<TableProps> = ({
   entries,
   pageNo,
 }): JSX.Element => {
+  const bgColor = useContext(TableColor).value
   // hook that sorts data
   const [sortedField, setSortedField] = useState<any[]>(data)
 
@@ -35,10 +37,7 @@ export const Table: React.FC<TableProps> = ({
   }
 
   return (
-    <table
-      className="data-table"
-      style={{ backgroundColor: 'rgb(255, 174, 75)' }}
-    >
+    <table className="data-table" style={{ backgroundColor: bgColor } }>
       <TableHeader columns={columns} onclick={handleSort} />
       <TableBody
         fields={sortedField}

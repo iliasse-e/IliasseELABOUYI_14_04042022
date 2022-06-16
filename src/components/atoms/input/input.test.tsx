@@ -6,9 +6,15 @@ import { Input } from './input'
 
 it('renders input component and triggers onChange', async () => {
   const mockChange = jest.fn()
+  const mockSetState = jest.fn()
   const user = userEvent.setup()
   const { getByTestId } = render(
-    <Input content="first name" type="text" onChange={mockChange} />
+    <Input
+      content="first name"
+      type="text"
+      onChange={mockChange}
+      setIsNotValid={mockSetState}
+    />
   )
   const input = getByTestId('first-name')
   await user.type(input, 'Shavkat')

@@ -6,7 +6,7 @@ Welcome to HRnet! This is our company's internal application to create and view 
 
 - React (Create React App)
 - TypeScript
-- Redux (persistor)
+- MSW
 
 ## Getting started
 
