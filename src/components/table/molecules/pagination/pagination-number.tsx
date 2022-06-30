@@ -21,8 +21,8 @@ export const PaginationNumber: React.FC<PaginationNumberProps> = ({
     <span data-testid="pagination-btn-container">
       {calculateRange(data, entries).map((btn) => (
         <button
-          className={btn === pageNo && 'active'}
-          style={btn === pageNo && { backgroundColor: bgColor }}
+          className={btn === pageNo ? 'active' : ''}
+          style={btn === pageNo ? { backgroundColor: bgColor } : {}}
           aria-controls="data-table"
           key={btn}
           onClick={() => setPageNo(btn)}

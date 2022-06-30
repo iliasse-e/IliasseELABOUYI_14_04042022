@@ -1,22 +1,18 @@
 import { EmployeeType } from 'types'
-import { getEmployees, postEmployees } from './fetch-data'
+import { postEmployees } from './api/fetch-data'
 
 /**
- * Add new employee item to current employees storage list
- * @param employee
+ * Sends request to register new employee
+ * If the request does not recall, return initial employee array
  */
 export const addNewEmployee = async (
-  employee: EmployeeType
+  updatedEmployees: EmployeeType[],
+  currentEmployees: EmployeeType[]
 ): Promise<EmployeeType[]> => {
-  try {
-    const response = await getEmployees()
-    // getting current data
-    let newData: EmployeeType[] = [...response?.data?.employeeList]
-    // adding new employee to employees list
-    newData.push(employee)
-    postEmployees(newData)
-    return newData
-  } catch (err) {
-    console.log(err)
-  }
+  return postEmployees(updatedEmployees)
+    .then((response) => response)
+    .catch((err) => {
+      console.error(err)
+      return currentEmployees
+    })
 }

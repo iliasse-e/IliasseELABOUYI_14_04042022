@@ -1,4 +1,4 @@
-import { Column, TYPE } from '../components/table/type'
+import { Column, TYPE } from '../types'
 
 export const columns: Column[] = [
   { title: 'First Name', data: 'firstName', type: TYPE.string },

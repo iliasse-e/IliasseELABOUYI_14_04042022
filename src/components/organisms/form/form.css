@@ -20,7 +20,7 @@ form {
 }
 
 form label {
-    color: rgb(253, 142, 7);
+    color: rgb(253, 142, 7) !important;
     display: block;
     margin-top: 1rem;
     margin-bottom: 10px;

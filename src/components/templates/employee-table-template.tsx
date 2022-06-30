@@ -7,9 +7,8 @@ import DataContext from 'features/context'
 
 export const EmployeeTableTemplate: React.FC = (): JSX.Element => {
   const { employees } = useContext(DataContext)
-
   return (
-    <main>
+    <main className='employee-table-template'>
       <Link
         className="link-to-create-employee form-btn"
         to={process.env.REACT_APP_CREATE_EMPLOYEE_PAGE}
@@ -23,7 +22,7 @@ export const EmployeeTableTemplate: React.FC = (): JSX.Element => {
         <TableTemplate
           dataInput={employees}
           columns={columns}
-          color={'#88FF22'}
+          color={'rgb(255, 174, 75)'}
         />
       </div>
     </main>

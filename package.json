@@ -12,6 +12,7 @@
     "react-dom": "^18.0.0",
     "react-dropdown-select": "^4.8.4",
     "react-scripts": "5.0.0",
+    "react-transition-group": "^4.4.2",
     "redux-persist": "^6.0.0"
   },
   "scripts": {
@@ -49,6 +50,7 @@
     "@testing-library/user-event": "^14.2.0",
     "@types/jest": "^27.5.1",
     "@types/react-datepicker": "^4.4.0",
+    "@types/react-transition-group": "^4.4.5",
     "babel-jest": "^28.1.0",
     "global-jsdom": "^8.4.0",
     "jest": "^28.1.0",

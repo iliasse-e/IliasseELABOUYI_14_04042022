@@ -1,5 +1,5 @@
 import { rest, setupWorker } from 'msw'
-import { mockedEmployees } from './mocks'
+import { mockedEmployees } from '../data/employees'
 
 const worker = setupWorker(
   rest.post('api/set-employees', (req, res, ctx) => {

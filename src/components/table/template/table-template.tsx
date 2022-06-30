@@ -12,7 +12,7 @@ import { TableColor } from '../services/table-color-context'
 interface TableTemplateProps {
   dataInput: Array<{ [key: string]: any }>
   columns: Column[]
-  color?: Color
+  color: Color
 }
 
 /**
@@ -23,8 +23,6 @@ export const TableTemplate: React.FC<TableTemplateProps> = ({
   columns,
   color,
 }): JSX.Element => {
-  console.log(dataInput)
-
   const [entries, setEntries] = useState(10)
   const [pageNo, setPageNo] = useState(1)
   const [data, setData] = useState<Array<{ [key: string]: any }>>(dataInput)
@@ -35,11 +33,8 @@ export const TableTemplate: React.FC<TableTemplateProps> = ({
         .toLocaleLowerCase()
         .includes(word.toLocaleLowerCase())
     )
-    console.log(data, res, word)
     setData(res)
-    // Showing 11 to 20 of 19 entries
     setPageNo(1)
-    console.log(data)
   }
 
   return (

@@ -1,5 +1,7 @@
 .table-section-container {
     margin: 20px;
+    background-color: white;
+    padding: 20px;
 }
 
 .table-footer, .table-header {

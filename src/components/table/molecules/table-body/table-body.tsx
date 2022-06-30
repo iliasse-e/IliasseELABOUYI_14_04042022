@@ -1,8 +1,8 @@
-import { convertDate } from 'components/services/formate-date'
+import { convertDate } from 'components/services/formate-date/formate-date'
 import React from 'react'
 import { Column } from '../../type'
 import './table-body.css'
-import {TYPE} from '../../type'
+import { TYPE } from '../../type'
 
 interface TableBodyProps {
   fields: any[]

@@ -14,7 +14,7 @@ export enum FormatType {
  */
 export const convertDate = (input: Date, type?: FormatType) => {
   // if (typeof input === 'string') return input
-  function pad(s) {
+  function pad(s: string | number) {
     return s < 10 ? '0' + s : s
   }
   var d = new Date(input)

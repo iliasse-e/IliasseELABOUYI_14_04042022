@@ -16,5 +16,17 @@ export enum DEPARTMENT {
   MARKETING = 'marketing',
   ENGINEERING = 'engineering',
   HUMAN = 'human',
-  LEGAL = 'legal'
+  LEGAL = 'legal',
+}
+
+export interface Column {
+  title: string
+  data: string
+  type?: TYPE
+}
+
+export enum TYPE {
+  string = 'STRING',
+  number = 'NUMBER',
+  date = 'DATE',
 }

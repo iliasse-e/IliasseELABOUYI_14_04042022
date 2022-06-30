@@ -1,4 +1,4 @@
-import '../../setupTest'
+import '../../../setupTest'
 import { convertDate, FormatType } from './formate-date'
 /**
  * @jest-environment jsdom

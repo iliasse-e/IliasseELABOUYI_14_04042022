@@ -28,7 +28,7 @@ const columns = [
 
 it('Should render table even in case of empty data and wrong column data', () => {
   const component = render(
-    <TableTemplate dataInput={[{}]} columns={[{}] as Column[]} />
+    <TableTemplate dataInput={[{}]} columns={[{}] as Column[]} color={'rgb(255, 174, 75)'} />
   )
   const element = component.getByRole('table')
   expect(element).toBeInTheDocument()
@@ -47,7 +47,7 @@ it('goes to next pagination number button as next button is clicked', async () =
 
 it('hides all data that is not linked with search input', async () => {
   const { getByTestId } = render(
-    <TableTemplate dataInput={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} color={'rgb(255, 174, 75)'} />
   )
   const searchInput = getByTestId('search')
   fireEvent.change(searchInput, { target: { value: 'Baku' } })
@@ -56,7 +56,7 @@ it('hides all data that is not linked with search input', async () => {
 
 it('sorts data on categroy click', async () => {
   const { getByTestId } = render(
-    <TableTemplate dataInput={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} color={'rgb(255, 174, 75)'} />
   )
   const sortByNameUpBtn = getByTestId('name-arrow-up')
   fireEvent.click(sortByNameUpBtn)
@@ -66,7 +66,7 @@ it('sorts data on categroy click', async () => {
 
 it('shows all data in one table page', async () => {
   const { getByTestId } = render(
-    <TableTemplate dataInput={data} columns={columns} />
+    <TableTemplate dataInput={data} columns={columns} color={'rgb(255, 174, 75)'} />
   )
   const tableDropdown = getByTestId('table-dropdown')
   const btnContainer = getByTestId('pagination-btn-container')

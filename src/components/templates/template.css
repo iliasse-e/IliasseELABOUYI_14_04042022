@@ -13,9 +13,14 @@
 }
 
 .link-to-employee-list, .link-to-create-employee {
-    margin-left: 15%;
+    margin-left: 8.5%;
 }
 
 .link-to-employee-list, .link-to-create-employee {
     color: white;
+}
+
+.App, .employee-table-template {
+    transform: translate3d(0, 0, 0);
+    transition: all 600ms;
 }

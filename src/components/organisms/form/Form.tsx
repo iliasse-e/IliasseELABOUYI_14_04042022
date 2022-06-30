@@ -9,12 +9,11 @@ import { InputField } from 'components/molecules/input-field/input-field'
 import { EmployeeCreatedModal } from '../modal/employee-created-modal'
 import { DEPARTMENT, EmployeeType } from 'types'
 import DataContext from 'features/context'
-import { postEmployees } from 'components/services/fetch-data'
+import { postEmployees } from 'components/services/api/fetch-data'
 
 /**
  * Renders the form
- * Saves new data to the store
- * @returns create employee form
+ * Registers new employee
  */
 export const Form = (): JSX.Element => {
   const birthDateDefault = new Date(
@@ -30,15 +29,13 @@ export const Form = (): JSX.Element => {
   const [startDate, setStartDate] = useState<Date>(startDateDefault)
   const [street, setStreet] = useState<string | null>(null)
   const [city, setCity] = useState<string | null>(null)
-  const [state, setState] = useState<string>(states[0].value) // default value
+  const [state, setState] = useState<string>(states[0].value)
   const [zipCode, setZipCode] = useState<number | null>(null)
-  const [department, setDepartment] = useState<DEPARTMENT>(
-    departments[0].value as DEPARTMENT
-  ) // default value
+  const [department, setDepartment] = useState<DEPARTMENT>(departments[0].value)
   const [isSubmited, setIsSubmited] = useState<boolean>(false)
   const { employees, setEmployees } = useContext(DataContext)
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const submitEmployee = async (e: React.SyntheticEvent) => {
     e.preventDefault()
 
     const userInput: EmployeeType = {
@@ -68,7 +65,7 @@ export const Form = (): JSX.Element => {
   return (
     <>
       {isSubmited && <EmployeeCreatedModal handleStateChange={setIsSubmited} />}
-      <form id="create-employee" data-testid="form" onSubmit={handleSubmit}>
+      <form id="create-employee" data-testid="form" onSubmit={submitEmployee}>
         <div className="form-container">
           <div className="form-column">
             <InputField

@@ -1,28 +1,30 @@
+import { DEPARTMENT } from "types"
+
 /**
  * Data used to set up a dropodown content
  */
 export const departments: {
   label: string
-  value: string
+  value: DEPARTMENT
 }[] = [
   {
     label: 'Sales',
-    value: 'sales',
+    value: DEPARTMENT.SALES,
   },
   {
     label: 'Marketing',
-    value: 'marketing',
+    value: DEPARTMENT.MARKETING,
   },
   {
     label: 'Engineering',
-    value: 'engineering',
+    value: DEPARTMENT.ENGINEERING,
   },
   {
     label: 'Human',
-    value: 'human',
+    value: DEPARTMENT.HUMAN,
   },
   {
     label: 'Legal',
-    value: 'legal',
+    value: DEPARTMENT.LEGAL,
   },
 ]

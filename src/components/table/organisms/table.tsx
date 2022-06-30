@@ -37,7 +37,7 @@ export const Table: React.FC<TableProps> = ({
   }
 
   return (
-    <table className="data-table" style={{ backgroundColor: bgColor } }>
+    <table className="data-table" style={{ backgroundColor: bgColor }}>
       <TableHeader columns={columns} onclick={handleSort} />
       <TableBody
         fields={sortedField}

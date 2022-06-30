@@ -25,7 +25,7 @@ export const Input: React.FC<InputType> = ({
 
   const pattern = (target: string): string => {
     if (target.includes('name') || target.includes('city')) {
-      return '[a-zA-Z ]+'
+      return "['a-zA-Z ]+"
     } else return '[a-zA-Z0-9 ]+'
   }
 
