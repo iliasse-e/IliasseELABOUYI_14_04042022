@@ -8,7 +8,7 @@ import DataContext from 'features/context'
 export const EmployeeTableTemplate: React.FC = (): JSX.Element => {
   const { employees } = useContext(DataContext)
   return (
-    <main className='employee-table-template'>
+    <main className="employee-table-template template fade-in">
       <Link
         className="link-to-create-employee form-btn"
         to={process.env.REACT_APP_CREATE_EMPLOYEE_PAGE}

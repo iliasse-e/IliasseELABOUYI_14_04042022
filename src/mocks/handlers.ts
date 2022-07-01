@@ -1,6 +1,10 @@
 import { rest, setupWorker } from 'msw'
 import { mockedEmployees } from '../data/employees'
 
+/**
+ * Sets up a mocked backend for POST and GET HTTP requests
+ */
+
 const worker = setupWorker(
   rest.post('api/set-employees', (req, res, ctx) => {
     // Persist data in the session store

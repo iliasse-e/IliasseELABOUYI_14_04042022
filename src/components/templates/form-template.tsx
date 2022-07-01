@@ -4,7 +4,7 @@ import './template.css'
 
 export const FormTemplate = (): JSX.Element => {
   return (
-    <>
+    <div className="template form-template fade-in">
       <header className="title">
         <h1>HRnet</h1>
       </header>
@@ -22,6 +22,6 @@ export const FormTemplate = (): JSX.Element => {
           <Form />
         </div>
       </main>
-    </>
+    </div>
   )
 }

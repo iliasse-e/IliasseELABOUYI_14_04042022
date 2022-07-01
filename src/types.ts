@@ -1,3 +1,6 @@
+/**
+ * @file gathers all types that are used in different components
+ */
 
 export type EmployeeType = {
   firstName: string

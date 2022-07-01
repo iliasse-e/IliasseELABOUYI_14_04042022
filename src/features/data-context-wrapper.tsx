@@ -5,7 +5,7 @@ import { Loader } from 'components/atoms/loader/loader'
 import { getEmployees } from 'components/services/api/fetch-data'
 
 /**
- * Contains data that need to wrap App component
+ * Component containing the employee context that need to wrap App component
  */
 export const DataContextWrapper = ({ children }): JSX.Element => {
   const [employees, setEmployees] = useState<EmployeeType[] | []>([])

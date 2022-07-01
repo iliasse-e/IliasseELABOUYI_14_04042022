@@ -20,7 +20,15 @@
     color: white;
 }
 
-.App, .employee-table-template {
+.template a:active {
+    background-color: #0975fb;
     transform: translate3d(0, 0, 0);
     transition: all 600ms;
+}
+
+.fade-in { animation: fadeIn 0.4s forwards; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

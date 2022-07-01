@@ -2,6 +2,7 @@
 
 Welcome to HRnet! This is our company's internal application to create and view employee records.
 This application has been made with technology React and unit/integration tests have been implemented.
+Atomic design architecture has been used.
 The back end has been mocked with MSW for the dev version.
 
 ## Technologies :

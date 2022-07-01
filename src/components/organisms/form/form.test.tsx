@@ -3,8 +3,11 @@ import { render, fireEvent } from '@testing-library/react'
 import '../../../setupTest'
 import { Form } from './form'
 import userEvent from '@testing-library/user-event'
+import { EmployeeCreatedModal } from '../modal/employee-created-modal'
 
 const component = () => render(<Form />)
+
+const modal = () => render(<EmployeeCreatedModal handleStateChange={jest.fn()} />)
 
 it('renders form', () => {
   const { getByText } = component()
@@ -33,7 +36,10 @@ it('opens modal when form is submitted', async () => {
   await user.type(city, 'GeorgiaTown')
   await user.type(zipCode, '02050')
   expect(getByRole('textbox', { name: 'first-name' })).toHaveValue('Namvar')
+  expect(getByRole('textbox', { name: 'city' })).toHaveValue('GeorgiaTown')
+  expect(getByRole('textbox', { name: 'street' })).toHaveValue('Tra 17')
+  expect(zipCode).toHaveValue(parseInt('02050'))
+  expect(lastName).toHaveValue('Dugary')
   fireEvent.click(submitBtn)
-  // const confirmationModal = screen.getByTestId("close-modal")
-  // expect(confirmationModal).toBeInTheDocument()
+  expect(modal().getByText('Employee created')).toBeInTheDocument()
 })

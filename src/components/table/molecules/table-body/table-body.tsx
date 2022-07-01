@@ -28,7 +28,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
       {fields
         .slice(entries * pageNo - entries, entries * pageNo)
         .map((element) => (
-          <tr key={Math.random()}>
+          <tr className="fade-in" key={Math.random()}>
             {columns.map((column) => {
               return column.type === TYPE.date ? (
                 <td key={convertDate(element[column.data])}>
